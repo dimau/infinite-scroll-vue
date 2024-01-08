@@ -47,23 +47,26 @@ function useInfiniteScroll<T>({
   }
 
   async function loadMore() {
-    const items = await fetchEntities(page.value, entitiesPerPage);
-    page.value++;
-    list.value.push(...items);
+    try {
+      const items = await fetchEntities(page.value, entitiesPerPage);
+      page.value++;
+      list.value.push(...items);
 
-    // If API can't give us anymore elements
-    if (items.length === 0) {
+      // If API can't give us anymore elements
+      if (items.length === 0) {
+        canLoadMore.value = false;
+      }
+    } catch (err) {
+      console.warn("Load Error: ", err);
       canLoadMore.value = false;
+    } finally {
+      isLoading.value = false;
     }
-
-    isLoading.value = false;
   }
 
   onMounted(async () => {
     // Initial first items loading
-    const items = await fetchEntities(page.value, entitiesPerPage);
-    list.value.push(...items);
-    page.value++;
+    await loadMore();
     initialLoading.value = false;
 
     // Setup intersection observer

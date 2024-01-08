@@ -14,7 +14,7 @@ async function fetchPersons(page: number, amount: number): Promise<Person[]> {
     const data = await response.json();
     return data.results;
   } catch (err) {
-    console.error("Fetch Error: ", err);
+    console.warn("Fetch Error: ", err);
     return [];
   }
 }
