@@ -22,9 +22,9 @@ const fullName = computed(
 
 <style scoped>
 .card {
-  padding: 10px;
+  padding: 20px 10px;
   background-color: #fff;
-  max-width: 360px;
+  width: 340px;
   display: flex;
   flex-direction: column;
   align-items: center;

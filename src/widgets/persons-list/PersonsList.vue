@@ -33,14 +33,14 @@ const scrollContainer = ref();
 const sentinel = ref();
 
 const { list, canLoadMore, initialLoading } = useInfiniteScroll({
-  entitiesPerPage: 10,
+  entitiesPerPage: 18,
   fetchEntities: fetchPersons,
   sentinel,
   scrollContainer,
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .scroll-container {
   height: 100%;
   overflow-y: scroll;
@@ -48,6 +48,20 @@ const { list, canLoadMore, initialLoading } = useInfiniteScroll({
 
 .sentinel {
   height: 0;
+}
+
+.list-container {
+  display: grid;
+  grid-template-columns: auto;
+  justify-items: center;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: auto auto;
+  }
+
+  @media screen and (min-width: 1200px) {
+    grid-template-columns: auto auto auto;
+  }
 }
 
 .list-item {
