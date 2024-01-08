@@ -36,7 +36,6 @@ const { list, canLoadMore, initialLoading } = useInfiniteScroll({
   entitiesPerPage: 18,
   fetchEntities: fetchPersons,
   sentinel,
-  scrollContainer,
 });
 </script>
 

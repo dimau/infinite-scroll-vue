@@ -10,9 +10,10 @@ type Params<T> = {
 function useInfiniteScroll<T>({
   entitiesPerPage,
   fetchEntities,
+  scrollContainer,
   sentinel,
 }: Params<T>) {
-  const list = ref<T[]>([]);
+  const list = ref<T[]>([]) as Ref<T[]>;
   const isLoading = ref(false);
   const page = ref(1);
   const canLoadMore = ref(true);
@@ -21,9 +22,7 @@ function useInfiniteScroll<T>({
 
   function initializeIntersectionObserver() {
     const options = {
-      // TODO: change to using scrollContainer instead of viewport
-      // root: scrollContainer.value,
-      root: null,
+      root: scrollContainer?.value ?? null,
       rootMargin: "200px",
     };
 
