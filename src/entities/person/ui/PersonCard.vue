@@ -1,8 +1,8 @@
 <template>
   <div class="card">
-    <img :src="person.picture.medium" alt="Avatar" class="avatar" />
-    <span>{{ fullName }}</span>
-    <span>{{ person.email }}</span>
+    <img :src="person.picture.large" alt="Avatar" class="avatar" />
+    <span class="full-name">{{ fullName }}</span>
+    <span class="email">{{ person.email }}</span>
   </div>
 </template>
 
@@ -39,5 +39,15 @@ const fullName = computed(
   height: 8rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
   border-radius: 50%;
+}
+
+.full-name {
+  font-family: sans-serif;
+  font-size: 1.2em;
+}
+
+.email {
+  font-family: sans-serif;
+  font-size: 0.8em;
 }
 </style>
